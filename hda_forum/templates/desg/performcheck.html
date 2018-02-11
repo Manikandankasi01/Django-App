@@ -1,0 +1,234 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block body %}
+<div class="row" style="background:inherit">
+<div class="col-lg-12">
+  <nav class="navbar navbar-default bg nav-custom" style="z-index:10">
+    <div class="container logout">
+      <ul class="nav navbar-nav navbar-right log-bg">
+        <li><a href="http://127.0.0.1:8000/"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+</div>
+<br><br><br>
+<div class="row">
+  <div class="col-md-3">
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav side-nav">
+          <li>
+              <a href="{% url 'desg_t18:desg_home' %}"><i class="glyphicon glyphicon-home"></i>  DESG Home</a>
+          </li>
+          <li>
+                    <a href="{% url 'desg_t18:desg_team' %}">
+                        <i class="fa fa-fw fa-user"></i>DESG Team</a>
+                </li>
+          <li>
+            <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-star"></i> DESG Work flow<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+              <ul id="submenu-1" class="collapse">
+                  <li><a href="{% url 'desg_t18:pc' %}"><i class="fa fa-angle-double-right"></i> Perform check</a></li>
+                  <li><a href="{% url 'desg_t18:gml' %}"><i class="fa fa-angle-double-right"></i> GML Creation</a></li>
+              </ul>
+          </li>
+          <li>
+            <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>  Discustions <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+            <ul id="submenu-2" class="collapse">
+              <li><a href="{% url 'desg_t18:triage_update' %}"><i class="fa fa-angle-double-right"></i> Triage Note</a></li>
+              <li><a href="{% url 'desg_t18:meeting_update' %}"><i class="fa fa-angle-double-right"></i>Meeting updates</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" data-toggle="collapse" data-target="#submenu-3"><i class="fa fa-fw fa-star"></i>DESG Automation <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+            <ul id="submenu-3" class="collapse">
+              <li><a href="{% url 'automation:desg_automation' %}"><i class="fa fa-angle-double-right"></i> Tool release Note</a></li>
+              <li><a href="{% url 'automation:desg_automation_update' %}"><i class="fa fa-angle-double-right"></i>Tool requirment Update</a></li>
+            </ul>
+          </li>
+              <li>
+                  <a href="{% url 'desg_t18:desg_dashboard' %}"><i class="fa fa-fw fa-star"></i>DESG Dashboard</a>
+              </li>
+              <li>
+                  <a href="{% url 'desg_t18:forum' %}"><i class="glyphicon glyphicon-book"></i>  Forum</a>
+              </li>
+              <li>
+                  <a href="{% url 'desg_t18:pc_update' %}"><i class="fa fa-fw fa-star"></i>PC Update</a>
+              </li>
+        </ul>
+        </div>
+  </div>
+  <div class="col-md-9">
+    <div class="container middle-content">
+          <h3 class="head text-center">Perform Check Process</h3>
+
+        <div class="jumbotron jumb">
+            <h3 class="head">Perform Check</h3>
+          <p class="paragraph">
+            Perform check task for to validate the design for given particular SAM boundary and verify 200+ validation checks
+            using MapInfo validator tool and also validate the SAM, NAT and ADA boundary in PNI with reference of T18.
+          </p>
+        </div>
+
+        <div class="jumbotron jumb">
+             <h3 class="head">PC Task</h3>
+          <table class="table" border="2">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Design Only SAM</th>
+                <th scope="col">Pre-AT SAM</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Boundary Check</td><td>Boundary Check</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>T18 Trimming</td><td>T18 Trimming</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>T18 Validation and Fix</td><td>T18 Validation and Fix</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>MTM Document check</td><td>MTM Document check</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Boundary Demotion</td><td>Boundary Demotion</td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td>NA</td><td>MPS Promotion</td>
+              </tr>
+              <tr>
+                <th scope="row">7</th>
+                <td>NA</td><td>Loc ID verification in T18 Vs PNI</td>
+              </tr>
+              <tr>
+                <th scope="row">8</th>
+                <td>PNI Validation Run</td><td>PNI Validation Run</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <div class="jumbotron jumb">
+             <h3 class="head"> Boundary Check</h3>
+          <p class="paragraph">
+            Boundary check is the first step of Pc task, this check we are going to validate PNI boundary and T18 boundary. for ideal case both should be match each other. if you find any major boundary issue then we should raise flag to AP Team. AP team will look at the mismatch and align the boundary in PNI if required. boundary check will be done by two ways.
+          </p>
+          <ul class="paragraph">
+            <li>PNI Boundary Check</li>
+            <li>T18 & PNI boundary comparison</li>
+          </ul>
+        </div>
+
+
+          <div class="jumbotron jumb">
+              <h3 class="head">PNI Boundary Check</h3>
+            <p class="paragraph">
+              This check we have to verify SAM, NAT and ADA boundary, these boundarys should not be overlap with any other SAM boundary. SAM boundary should be lie with in FSA. if you find any of above issue we should send mail with PNI Boundary snap to AP team. they will look into PNI Boundary and correct accordingly in PNI.
+            </p>
+          </div>
+
+          <div class="jumbotron jumb">
+              <h3 class="head">T18 & PNI boundary comparison</h3>
+            <p class="paragraph">
+              T18 Vs PNI Boundary comparion will be done using tool (MapInfo Tool). to run this tool we need few inputs 1. T18 Files 2. PNI Boundary SAM,NAT and ADA layer. this file we can get it from PNI, need to export from PNI. ones we have these two files then run Mapinfo tool in DESG drop down Compare boundary. ones tool run is completed then you will get mismatch report in output folder, also get mail template with mismatched boundary snaps. finally verify the template mail and send to AP team. if PNI and T18 boundarys match exactly each other then u will get popup message saying no boundary mismatch then its fine go ahead further setps.
+            </p>
+          </div>
+
+          <div class="jumbotron jumb">
+              <h3 class="head">T18 Trimming</h3>
+          <p class="paragraph">
+            Trimming is the process of removing data from T18, which is irelavent to the that particular SAM boundary. this process also need to be done by tool. this tool retain the network entities which all are present in given boundaay, can be SAM or NAT boundary. if HFC only SAMs we should use SAM boundary for trimming, if MTM and Patial ONSA SAMs we should use NAT boundary for trimming.
+          </p>
+        </div>
+
+        <div class="jumbotron jumb">
+            <h3 class="head">T18 Validation and Fix</h3>
+            <p class="paragraph">
+              T18 Validation and fix will be done by MapInfo tool. there are 200+ checks all checks will be checked using this tool. as part of this validation process node split can be done based on node split defined in NDD Document,which is available in Sharepoint location. ones validation and fix is completed then we can get checklist results csv file. this file contains all checks related data.
+            </p>
+          </div>
+
+          <div class="jumbotron jumb">
+              <h3 class="head">MTM Document Check</h3>
+              <p class="paragraph">
+                MTM Document check required for FTTx SAMs, there are few set of document required for process FTTN SAMs.
+              </p>
+              <p class=" head paragraph">
+                Document Required:
+              </p>
+              <ol class="paragraph">
+                <li>SLD</li>
+                <li>Splicing Document</li>
+                <li>CCU Workbook</li>
+                <li>Redline Document</li>
+                <li>BOMBOQ Minima</li>
+              </ol>
+            </div>
+
+            <div class="jumbotron jumb">
+                <h3 class="head">Boundary Demotion</h3>
+              <p class="paragraph">
+                Boundary demotion is the process of removing Teltra support structure, copper network, fibre network and HFC network design which already present in PNI.
+              </p>
+            </div>
+
+            <div class="jumbotron jumb">
+                <h4 class="head">Demotion Steps</h4>
+                <ul class="paragraph">
+                  <li>Create Job in PNI</li>
+                  <li>Export Design from PNI</li>
+                  <li>Export OSP Report from PNI</li>
+                  <li>Telstra support structure demotion</li>
+                  <li>Fibre Network Demotion (if required)</li>
+                  <li>Copper network demotion (if required)</li>
+                  <li>HFC network demotion (if required)</li>
+                  <li>Post the job</li>
+                </ul>
+              </div>
+
+            <div class="jumbotron jumb">
+                 <h3 class="head">MPS Boundary Promotion</h3>
+
+                <p class="paragraph">MPS promotion is the process of promoting multi premises sites boundarys in PNI. MPS boundarys containing MDUs  & SDU (Multi duelling unit & single duelling Unit)
+                </p>
+              </div>
+
+            <div class="jumbotron jumb">
+                <h4 class="head">MPS Boundary extraction from T18</h4>
+                  <p class="paragraph">
+                    Boundary table contains all the MPS boundary. this MPS extraction process only bring MPS boundary from boundary table with specific table format (importable) with the technology type using Mapinfo tool. ones MPS boundary extraction is completed then import MPS boundary layer in PNI. if error is zero then we can go ahead further, if you encounter any issues like boundary overlap or boundary avoidences error then we have to fix the issue adjusting MPS boundary in map object. before MPS boundary promotion make sure Technology type should not be blank.
+                  </p>
+                </div>
+
+            <div class="jumbotron jumb">
+                 <h3 class="head">Loc ID verification in T18 Vs PNI</h3>
+                <p class="paragraph">
+                  This check will be start ones we get address files from LDM. this check mainly for validate all the MPS boundary should be served by GTD, and GTD, PCD(SL) should be inside MPS Boundary, if not we need to verify the sl location in state and Google Map exact location of SL then move the PCD accordingly in PNI.
+                </p>
+            </div>
+
+            <div class="jumbotron jumb">
+                 <h3 class="head">PNI Validation Run</h3>
+                <p class="paragraph">
+                  PNI Validation run is the process of Pre-Validating GML file in PNI. this is dummy run in PNI to validate all the network entities have meet the pre-validation. if anything failed during validation run then failed network entities will be captured in GML Summary report.
+                  SpatialNET application only accept GML file to validate the design in PNI. in order to convert T18 file to GML we need GDSS portal, which will take T18 file as input and give few output files like GML, Location trace report and etc..
+                </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

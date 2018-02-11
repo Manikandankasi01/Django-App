@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block body %}
+
+  <div class="row" style="background:inherit">
+    <div class="col-lg-12">
+      <nav class="navbar navbar-default bg nav-custom" style="z-index:10">
+        <div class="container logout">
+          <ul class="nav navbar-nav navbar-right log-bg">
+            <li><a href="{% url 'desg_t18:login' %} "><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <br><br><br>
+  <div class="row">
+    <div class="col-md-3"><div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav side-nav">
+          <li>
+              <a href="{% url 'desg_t18:hda_dashboard' %}"><i class="fa fa-fw fa-star"></i>  Dashboard</a>
+          </li>
+          <li>
+              <a href="{% url 'desg_t18:team_view' %} "><i class="fa fa-fw fa-users"></i>  Teams</a>
+          </li>
+
+        </ul>
+        </div>
+  </div>
+  <div class="col-md-9">
+    <div class="container middle-content">
+      <div class="jumbotron jumb">
+      <h3 class="head ">NBN Overview:</h3>
+          <p class="paragraph">The National Broadband Network (NBN) is an Australian government owned national wholesale company which build and role out psychical network infrastructure all over the nation. also NBN had contract with internet service providers (ISP) in Australia. ISP will get the infrastructure from nbn and  sell the fixed internet access to end users.
+          NBN mission is 8 million in 2020 which means in year 2020 nbn will be provide infrastructure and internet connections to 8 million promises in Australia.
+          Telstra is one of the most ISP in Australia and Design & construction partner of NBN Co.
+          </p>
+
+        </div>
+
+        <div class="jumbotron jumb">
+          <h3 class="head">HDA overview</h3>
+          <p class="paragraph">
+            HDA is HFC Delivery Aggrement between NBN and Infosys to provide production support for Design validation, promotion and quality checks for HFC footprint.
+          </p>
+        </div>
+          <h3 class="head">DATA Management Services - Key Groups involved</h3>
+        <div class="jumbotron jumb">
+            <dt class="head">Area Planning Team:</dt>
+            <dd class="paragraph">Does the planning of Area that need a roll out. Generate APD & provide to Design Partner for designing.</dd>
+            <dt>Input:</dt> <dd class="paragraph">19.2 Telstra Data.</dd> <dt>Out put:</dt> <dd class="paragraph">Area Planning Document (GML)</dd>
+            <dt>IT System:</dt> <dd class="paragraph">PNI.</dd>
+        </div>
+        <div class="jumbotron jumb">
+            <dt class="head">Location Data Management:</dt>
+            <dd class="paragraph">Provide support for Service Location data during multiple stages of design including, APD, Design loads and Asset Transfer.</dd>
+            <dt>IT Systems:</dt> <dd class="paragraph">ELMS, Alteryx, In-house scripts</dd>
+        </div>
+        <div class="jumbotron jumb">
+            <dt class="head">DESG:</dt>
+            <dd class="paragraph">Pole Data Cleansing service to ensure appropriate pole data is used for SAM Design. This is done before Design is completed by the DP, once the APD is ready. Once the design is provided (FDDD), verify the FDDD for design compliance and generate final GML that can be loaded to PNI</dd>
+            <dt>Input – PDC:</dt> <dd class="paragraph">APD.</dd> <dt>Output:</dt> <dd class="paragraph">Cleansed Pole data for Area.</dd>
+            <dt>Input – FDDD Load:</dt> <dd class="paragraph">T18 MapInfo provided by DP. Output: Final GML for PNI load</dd>
+            <dt>IT Systems:</dt> <dd class="paragraph">GDSS, PNI, In house Mapbasic scripts</dd>
+        </div>
+        <div class="jumbotron jumb">
+            <dt class="head">DSG (Data Service Group):</dt> <dd class="paragraph">Load the GML file to PNI. Fix issues and fallouts caused by the load. Fix defects reported by QA team.</dd>
+            <dt>Input:</dt> <dd class="paragraph">Design GML. Output: PNI Load report</dd>
+            <dt>IT Systems:</dt> <dd class="paragraph">Physical Network Inventory (PNI) system</dd>
+        </div>
+        <div class="jumbotron jumb">
+            <dt class="head">NDQ (National Data Quality):</dt> <dd class="paragraph">QA for Loaded Design in PNI system</dd>
+            <dt>Input:</dt> <dd class="paragraph">PNI Data.</dd> <dt>Output:</dt> <dd class="paragraph">QA Report / Defects.</dd>
+            <dt>IT Systems:</dt> <dd class="paragraph">PNI, SharePoint for defects</dd>
+        </div>
+        <div class="jumbotron jumb">
+            <dt class="head">AT (Asset Transfer):</dt> <dd class="paragraph">Execute the Asset Transfer Loads & remediation based on the SAM type.</dd>
+            <dt>Input:</dt> <dd class="paragraph">AT Loads.</dd> <dt>Output:</dt><dd class="paragraph"> NSO Handover report</dd>
+            <dt>IT Systems:</dt> <dd class="paragraph">PNI, Data Loader, SharePoint etc.</dd>
+          </dl>
+        </div>
+
+
+        <div class="jumbotron jumb">
+          <h3 class="head">NBN Network technology</h3>
+          <ul>
+            <li>Fibre to the premises (FTTP)</li>
+            <li>Fibre to the building/basement (FTTB)</li>
+            <li>Fibre to the cabinate (FTTC)</li>
+            <li>Fibre to the node (FTTN)</li>
+            <li>Hybrid fibre coaxial (HFC)</li>
+            <li>Fixed wireless technology</li>
+          </ul>
+        </div>
+
+        <div class="jumbotron jumb">
+          <h3 class="head">Fibre to the premises</h3>
+        <p class="paragraph">The fibre architecture provides connectivity from each location via a Drop Fibre to a Network Access Point (NAP), through concentration points within Fibre Distribution Hubs (FDH) in Fibre Distribution Areas (FDA) and Fibre Serving Areas (FSA).
+          Each Fibre Access Node (FAN) is connected to Transit Fibre to provide backhaul to the Point of Interconnection (POI) with the Retail Service Providers (RSP) in the nearest practical location
+          The Aggregation Node will be co-located with the most appropriate FAN to allow the provision of competitive backhaul for the Retail and Wholesale Service Providers
+        </p>
+        <p class="paragraph">
+          In a FTTP implementation fiber runs all the way from the central office to each home and is clearly the end objective.
+          FTTP architectures are future-safe, enabling operators to deliver unlimited bandwidth: 100 Mbps per household today,
+          with technology evolutions set to increase this in the future. Their main drawback, however, is that (nationwide) FTTP deployments require a lot of time and money.
+        </p>
+        <img class="img-size" src="{%static "Images/fttp_1.jpg" %}" alt="fttp footprint">
+      </div>
+
+      <div class="jumbotron jumb">
+        <h3 class="head">Fibre to the basement (FTTB)</h3>
+        <p class="paragraph">
+          Fibre optic cables connected from POI to Node which will be placed basement of the building, from there existing telstra copper cables are
+          used to connect individual homes. FTTB is one step behind the FTTP footprint.
+        </p>
+        <img class="img-size" src="{% static "images/fttb_1.jpg" %}" alt="fttb footprint">
+      </div>
+
+      <div class="jumbotron jumb">
+        <h3 class="head">Fibre to the Cabinate (FTTC)</h3>
+        <p class="paragraph">
+          Fibre cables connected from POI to cabinate, which will be located very near to the premises maximum of 150 meters distances to the premises.
+          which will enable high speed bandwidth. existing telstra copper cables will be used effectively to connect Cabinate to premises.
+        </p>
+        <img class="img-size" src="{% static "images/fttc_1.jpg" %}" alt="fttc footprint">
+      </div>
+
+      <div class="jumbotron jumb">
+        <h3 class="head">Fibre to the Node (FTTN)</h3>
+        <p  class="paragraph">
+        Fibre cables connected from POI to Node, which will be located some where near to the premises maximum of 600 to 800 meters distances from the premises.
+        Tie cables (C & X pair) will be used to connect from node to pillar (CCU), and existing telstra copper cables used to connect pillar to CTB (Connection Terminal Block) device.
+        </p>
+        <img class="img-size" src="{% static "images/fttn_1.jpg" %}" alt="fttn footprint">
+      </div>
+        <h3 class="head">Hybrid fibre Coaxial (HFC)</h3>
+
+
+      <div class="jumbotron jumb">
+        <h4 class="head">History of HFC</h4>
+        <p class="paragraph">In the 1950s the first networks started deployment in the US. These networks were designed to receive a TV signal in a central antenna and distribute the television signal to local community.
+          As the size of these networks grew, so did the technical challenges to deliver quality television.  The solution was to use fibre as a means of pushing a high quality television signal much closer to the home.
+          This became know as Hybrid Fibre Coax
+        </p>
+      </div>
+
+      <div class="jumbotron jumb">
+        <h3 class="head">HFC Roll Out in Australia</h3>
+        <p class="paragraph">
+          The early 1990s with the advent of deregulation, saw the entry of Optus into the Australian market.  At the time Optus was part owned by an America company, CableVision.
+          As part of its entry into the market Optus decided to build a HFC network.  From this network they would offer both PayTV and Voice services
+          Telstra in response to this entry then built its own HFC network, with a roll out schedule that largely followed that of Optus
+        </p>
+      </div>
+
+      <div class="jumbotron jumb">
+        <h3 class="head">how does it work?</h3>
+        <p class="paragraph">The coax cable carries its own spectrum and the spectrum is then divided up into channels.
+          Upstream Channels are separate to Downstream Channels.
+          Some channels carry PayTV, other channels carry internet traffic
+          High Speed Broadband is achieved by bonding multiple channels together
+        </p>
+        <img class="img-size" src="{% static "images/hfc_1.jpg" %}" alt="hfc footprint">
+      </div>
+
+      <div class="jumbotron jumb">
+        <h3 class="head">Fixed wireless</h3>
+        <p class="paragraph">
+          nbn Fixed Wireless is a new broadband technology that offers a much faster and more reliable internet connection that what is currently available in most regional areas.
+          A small antenna installed on your premises picks up a signal from a wireless tower and allows you access to the internet. With speeds up to 25Mbps, the service is much faster than standard ADSL internet services available in metro areas.
+        </p>
+        <img class="img-size" src="{% static "images/wc_2.jpg" %}" alt="wireless footprint">
+      </div>
+
+      </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

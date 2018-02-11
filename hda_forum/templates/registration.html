@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block body %}
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default bg">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse bg">
+            <ul class="nav navbar-nav">
+              <li><a href="http://127.0.0.1:8000/">Home</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right bg log-bg">
+            <li><a href="{% url 'desg_t18:login' %} "><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+    
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="jumbotron jumb">
+            <img class="img-size-s" src="{%static "Images/infy.png" %}" alt="infy logo" style="width: 300px;">
+              </div>
+          </div>
+          <div class="col-lg-4 jumbotron jumb">
+          <div class="container">
+            <center><legend><b>Register Here<b></legend></center>
+              <form method="post">
+              {{ new_user|crispy }}
+              {% csrf_token %}
+              <input class="btn btn-default btn-primary " type="submit" name="Register" value="Register">
+              </form>
+            </div>
+          </div>
+          <div class="col-lg-2">
+            <div class="jumbotron jumb">
+            <img class="img-size-s" src="{%static "Images/nbn.png" %}" alt="nbn logo">
+              </div>
+          </div>
+        </div>
+{% endblock %}

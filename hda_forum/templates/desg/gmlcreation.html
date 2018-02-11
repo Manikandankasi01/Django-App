@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block body %}
+
+<div class="row" style="background:inherit">
+<div class="col-lg-12">
+  <nav class="navbar navbar-default bg nav-custom" style="z-index:10">
+    <div class="container logout">
+      <ul class="nav navbar-nav navbar-right log-bg">
+        <li><a href="http://127.0.0.1:8000/"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+</div>
+<br><br><br>
+<div class="row">
+  <div class="col-md-3">
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav side-nav">
+          <li>
+              <a href="{% url 'desg_t18:desg_home' %}"><i class="glyphicon glyphicon-home"></i>  DESG Home</a>
+          </li>
+          <li>
+                    <a href="{% url 'desg_t18:desg_team' %}">
+                        <i class="fa fa-fw fa-user"></i>DESG Team</a>
+                </li>
+          <li>
+            <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-star"></i> DESG Work flow<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+              <ul id="submenu-1" class="collapse">
+                  <li><a href="{% url 'desg_t18:pc' %}"><i class="fa fa-angle-double-right"></i> Perform check</a></li>
+                  <li><a href="{% url 'desg_t18:gml' %}"><i class="fa fa-angle-double-right"></i> GML Creation</a></li>
+              </ul>
+          </li>
+          <li>
+            <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>  Discustions <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+            <ul id="submenu-2" class="collapse">
+              <li><a href="{% url 'desg_t18:triage_update' %}"><i class="fa fa-angle-double-right"></i> Triage Note</a></li>
+              <li><a href="{% url 'desg_t18:meeting_update' %}"><i class="fa fa-angle-double-right"></i>Meeting updates</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" data-toggle="collapse" data-target="#submenu-3"><i class="fa fa-fw fa-star"></i>DESG Automation <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+            <ul id="submenu-3" class="collapse">
+              <li><a href="{% url 'automation:desg_automation' %}"><i class="fa fa-angle-double-right"></i> Tool release Note</a></li>
+              <li><a href="{% url 'automation:desg_automation_update' %}"><i class="fa fa-angle-double-right"></i>Tool requirment Update</a></li>
+            </ul>
+          </li>
+              <li>
+                  <a href="{% url 'desg_t18:desg_dashboard' %}"><i class="fa fa-fw fa-star"></i>DESG Dashboard</a>
+              </li>
+              <li>
+                  <a href="{% url 'desg_t18:forum' %}"><i class="glyphicon glyphicon-book"></i>  Forum</a>
+              </li>
+              <li>
+                  <a href="{% url 'desg_t18:gml_update' %}"><i class="fa fa-fw fa-star"></i>GML Updates</a>
+              </li>
+        </ul>
+        </div>
+  </div>
+  <div class="col-md-9">
+    <div class="container middle-content">
+          <h3 class="head text-center"><b>GML Creation Process<b></h3>
+        <div class="jumbotron jumb">
+            <h3 class="head">GML Creation:</h3>
+            <p class="paragraph">
+              GML Creation is the process of converting T18(Mapinfo table) to GML. this conversion will done by GDSS
+                tool (Web based application). ones we get GML along with some other reports like trace report, locations report, etc..
+                go for PNI load in spatialNET. there are different set of activities need to followed in GML creation process.
+            </p>
+        </div>
+
+        <div class="jumbotron jumb">
+             <h4 class="head">GML Creation Steps</h4>
+          <table class="table" border="2">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Design Only SAM</th>
+                <th scope="col">Pre-AT SAM</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Address Matching</td><td>Address Matching</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>GDSS Load</td><td>GDSS Load</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>NA</td><td>HFC Run in PNI</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>FTTx Run in PNI </td><td>FTTx Run in PNI (if required)</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Manual Fixes for FTTX component</td><td>Manual Fixes for FTTx (if required)/HFC component</td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td>NA</td><td>PNI Trace</td>
+              </tr>
+              <tr>
+                <th scope="row">7</th>
+                <td>NA</td><td>SC Report Generation</td>
+              </tr>
+              <tr>
+                <th scope="row">8</th>
+                <td>Handover to DSG</td><td>Handover to DSG</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+        <div class="jumbotron jumb">
+            <h3 class="head">Address Matching</h3>
+            <p class="paragraph">
+                Address matching is the process of replaceing temp loc id to actual location id given by LDM team in SL table.
+                this process can be done by mapbasic query through manual or mapbasic script. for manual process we need to save temp_loc_id csv file
+                as Address_Matching.TAB file with two columns one column name will be "Replacement_Identifier" (Original loc id) and another
+                column name will be "Existing_Identifier" (Temp ID) then open Address_matching. tab and sl table in MapInfo window then Run the below
+                query in mapbasic window one by one and save the table.
+            </p>
+            <ol>
+                <li>select * from sl where dp_change<>"D" and id not like "LOC%"</li>
+                <li>select count(*),id from sl where dp_change<>"D" group by id</li>
+                <li>select * from sl where not sl.id = Any(select Existing_Identifier from Address_Matching) and sl.dp_change<>"D" and sl.id not like "LOC%" and sl.tech_choice="HFC"</li>
+                <li>select count(*),Replacement_Identifier from Address_Matching group by Replacement_Identifier</li>
+                <li>select * from sl where sl.id in (Select Replacement_Identifier from Address_Matching) and sl.dp_change<>"D"</li>
+                <li>select sl.id "Dummy_sl",Address_Matching.Existing_Identifier "Dummy_Addr_File",Address_Matching.Replacement_Identifier "Loc_id_Addr_File" from sl,Address_Matching where sl.id=Address_Matching.Existing_Identifier into qupdate</li>
+                <li>Update qupdate set Dummy_sl=Loc_id_Addr_File</li>
+            </ol>
+        </div>
+
+        <div class="jumbotron jumb">
+            <h3 class="head">GDSS Load</h3>
+            <p class="paragraph">
+                Ones Address Matching completed then upload the T18 file in GDSS portal. GDSS portal will convert T18 files to GML with the Trace
+                report.
+            </p>
+        </div>
+
+        <div class="jumbotron jumb">
+            <h3 class="head">HFC Run In PNI</h3>
+            <p class="paragraph">
+                Ones we get GML then we have to load GML in PNI.
+            </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

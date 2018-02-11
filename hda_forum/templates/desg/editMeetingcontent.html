@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block page %}
+    {{ meeting_form.media }}
+{% endblock page %}
+{% block body %}
+
+  <div class="row" style="background:inherit">
+    <div class="col-lg-12">
+      <nav class="navbar navbar-default bg nav-custom" style="z-index:10">
+        <div class="container logout">
+          <ul class="nav navbar-nav navbar-right log-bg">
+            <li><a href="{% url 'desg_t18:login' %} "><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <br><br><br><br><br><br>
+<div class="row">
+  <div class="col-md-3">
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav side-nav">
+          <li>
+              <a href="{% url 'desg_t18:desg_home' %}"><i class="glyphicon glyphicon-home"></i>  DESG Home</a>
+          </li>
+          <li>
+                    <a href="{% url 'desg_t18:desg_team' %}">
+                        <i class="fa fa-fw fa-user"></i>DESG Team</a>
+                </li>
+          <li>
+            <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-star"></i> DESG Work flow<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+              <ul id="submenu-1" class="collapse">
+                  <li><a href="{% url 'desg_t18:pc' %}"><i class="fa fa-angle-double-right"></i> Perform check</a></li>
+                  <li><a href="{% url 'desg_t18:gml' %}"><i class="fa fa-angle-double-right"></i> GML Creation</a></li>
+              </ul>
+          </li>
+          <li>
+            <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>  Discustions <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+            <ul id="submenu-2" class="collapse">
+              <li><a href="{% url 'desg_t18:triage_update' %}"><i class="fa fa-angle-double-right"></i> Triage Note</a></li>
+              <li><a href="{% url 'desg_t18:meeting_update' %}"><i class="fa fa-angle-double-right"></i>Meeting updates</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" data-toggle="collapse" data-target="#submenu-3"><i class="fa fa-fw fa-star"></i>DESG Automation <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+            <ul id="submenu-3" class="collapse">
+              <li><a href="{% url 'automation:desg_automation' %}"><i class="fa fa-angle-double-right"></i> Tool release Note</a></li>
+              <li><a href="{% url 'automation:desg_automation_update' %}"><i class="fa fa-angle-double-right"></i>Tool requirment Update</a></li>
+            </ul>
+          </li>
+              <li>
+                  <a href="{% url 'desg_t18:desg_dashboard' %}"><i class="fa fa-fw fa-star"></i>DESG Dashboard</a>
+              </li>
+              <li>
+                  <a href="{% url 'desg_t18:forum' %}"><i class="glyphicon glyphicon-book"></i>  Forum</a>
+              </li>
+
+        </ul>
+        </div>
+  </div>
+  <div class="col-md-9">
+    <br>
+    <div class="">
+
+    </div>
+    <div class="container middle-content">
+      <br><br>
+      <h3 class="header text-center">Edit Meeting contents</h3>
+        <div class="jumbotron jumb">
+        <form method="post">
+          {% csrf_token %}
+          <table >
+          {% for field in meeting_form %}
+          <tbody>
+          <tr>
+            <td>
+              <label for="{{ field.label }}" style="display:inline-block;vertical-align:middle">{{ field.label_tag }}</label>
+            </td>
+            <td>
+              {{ field }}
+            </td>
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        <input class="btn btn-primary text-center custom-btn "type="submit" name="submit" value="Update">
+        </form>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

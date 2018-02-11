@@ -1,0 +1,114 @@
+{% extends "base_pdc.html" %} {% load static %}
+ {% block body %}
+
+<div class="row" style="background:inherit">
+    <div class="col-lg-12">
+        <nav class="navbar navbar-default bg nav-custom" style="z-index:10">
+            <div class="container logout">
+                <ul class="nav navbar-nav navbar-right log-bg">
+                    <li>
+                        <a href="http://127.0.0.1:8000/">
+                            <span class="glyphicon glyphicon-user"></span>Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="col-md-3">
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                <li>
+                    <a href="{% url 'desg_t18:hda_home' %}">
+                        <i class="glyphicon glyphicon-home"></i>  HDA Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'ldm:ldm_dashboard' %}">
+                        <i class="fa fa-fw fa-star"></i>  LDM Dashboard</a>
+                </li>
+                <li>
+                    <a href="{% url 'ldm:ldm_team' %}">
+                        <i class="fa fa-fw fa-user"></i> LDM Team</a>
+                </li>
+                        <li>
+                            <a href="{% url 'ldm:ldm_workflow' %}">
+                                <i class="fa fa-fw fa-star"></i> LDM Work Flow</a>
+                        </li>
+                </li>
+                <li>
+                    <a href="#" data-toggle="collapse" data-target="#submenu-2">
+                        <i class="fa fa-fw fa-star"></i> Discustions
+                        <i class="fa fa-fw fa-angle-down pull-right"></i>
+                    </a>
+                    <ul id="submenu-2" class="collapse">
+                        <li>
+                            <a href="{% url 'ldm:ldm_meeting_update' %}">
+                                <i class="fa fa-angle-double-right"></i> LDM Meeting Update</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" data-toggle="collapse" data-target="#submenu-3">
+                        <i class="fa fa-fw fa-star"></i>LDM Automation
+                        <i class="fa fa-fw fa-angle-down pull-right"></i>
+                    </a>
+                    <ul id="submenu-3" class="collapse">
+                        <li>
+                            <a href="{% url 'automation:ldm_automation' %}">
+                                <i class="fa fa-angle-double-right"></i> Tool release Note</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'automation:ldm_automation_update' %}">
+                                <i class="fa fa-angle-double-right"></i>Tool requirment Update</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="{% url 'pdc:pdc_forum' %}">
+                        <i class="glyphicon glyphicon-book"></i> PDC Forum</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="container middle-content">
+            <h2 class="head text-center ">LDM Overview</h2>
+            <div class="jumbotron jumb">
+            <h2 class="head">Location Data Management</h2>
+                <p class="paragraph">
+                    LDM is dealing with service locations. Service location is a premise where we can establish a network connection.
+                </p>
+
+            <h2 class="head">What is LDMs role in the T18?</h2>
+                <p class="paragraph">
+                    T18 is the name given to a set of tables that covers FDDD (Functional Detailed Design Document) and As Builts.
+                    The T18 contains tables that list all of the network elements and serviceable locations within a SAM.
+                    The T18 is created by the design partners (DPs) that work for Telstra (TLS).
+                    The purpose of this document is so that NBN is aware of what the network will be inside the SAM.
+                </p>
+                <p class="paragraph">
+                    So, the T18 comes from Telstra’s Design Partners.
+                    NBN then loads the location and network data into our systems so that we have a view of what the network looks like in the field.
+                </p>
+            </div>
+            <div class="jumbotron jumb">
+            <h2 class="head">What is LDMs role in the T18?</h2>
+           <p class="paragraph">
+               LDMs job is to ensure that all of the locations within the T18 are in our location database,
+               in the correct location with unique identifier and that the address attributes are the same as the T18 file.
+               If we do not ensure that all the locations in the T18 are in the database then the downstream teams will not be able to complete their network load.
+           </p>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $("#tabs").tabs();
+        });
+    </script> {% endblock %}

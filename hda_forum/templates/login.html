@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block body %}
+    <nav class="navbar navbar-default bg">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-right log-bg">
+          <li><a href="{% url 'desg_t18:register' %} "><span class="glyphicon glyphicon-user"></span> Register</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="row">
+          <div class="col-md-4">
+              <div class="jumbotron jumb">
+            <img class="img-size-s" src="{%static "Images/infy.png" %}" alt="infy logo" style="width: 300px;">
+                  </div>
+          </div>
+          <div class="col-md-4 jumbotron jumb">
+            <legend class="text-center">Login Here</legend>
+              <form method="post">
+                {{ login_form|crispy }}
+                {% csrf_token %}
+                <center><input class="btn btn-default btn-primary" type="submit" name="Login" value="Login"></center>
+              </form>
+          <center><a href="{% url 'desg_t18:change_pass' %} ">Change password here...</a></center>
+
+          </div>
+          <div class="col-md-2">
+            <div class="jumbotron jumb">
+            <img class="img-size-s" src="{%static "Images/nbn.png" %}" alt="nbn logo">
+                  </div>
+          </div>
+      </div>
+
+
+{% endblock %}

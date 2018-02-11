@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block body %}
+<div class="bg-image">
+  <div class="row" style="background:inherit">
+    <div class="col-lg-12">
+      <nav class="navbar navbar-default bg nav-custom" style="z-index:10">
+        <div class="container logout">
+            <ul class="nav navbar-nav navbar-left log-bg">
+            <li><a href="{% url 'desg_t18:hda_home' %} "><span class="glyphicon glyphicon-home"></span>Home</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right log-bg">
+            <li><a href="{% url 'desg_t18:login' %} "><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <br><br>
+        <div class="row" style="margin-top:10px">
+            <div class="col-lg-12">
+             <div class="top-head text-center">
+                    <h1 class="head"> HDA Teams</h1>
+                </div>
+            </div>
+        </div>
+    <br>
+        <div class="row" style="margin-top:10px">
+            <div class="col-lg-2 col-md-2 col-sm-12 text-center ">
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-md-12 text-center team-container">
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-center ">
+                     <a href="{% url 'pdc:pdc_home' %}"> <div class="box single-box">
+                      <img class="logo" src="{%static "Images/pdc.png" %}" >
+                        <p>Ploe Data Cleansing </p>
+                    </div></a>
+                    </div>
+              
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 text-center ">
+                    <a href="{% url 'desg_t18:desg_home' %}"><div class="box box-top">
+                      <img class="logo" src="{% static "Images/desg.jpg" %}" >
+                        <p>Design Enablement & Support Group</p>
+                    </div></a>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-md-12 text-center ">
+                    <a href="{% url 'ldm:ldm_home' %}" ><div class="box">
+                       <img src="{%static "Images/ldm.png" %}" class="logo">
+                        <p>Location Data Management</p>
+                      </div></a>
+                    </div>
+
+                </div>
+
+              <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 text-center ">
+                      <a href=""><div class="box box-top">
+                      <img src="{%static "Images/dsg.png" %}" class="logo">
+                        <p>Data Services Group</p>
+                    </div></a>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-md-12 text-center ">
+                    <a href=""><div class="box">
+                       <img src="{%static "Images/ndq.png" %}" class="logo">
+                        <p>National Data Quality</p>
+                    </div></a>
+      </div>
+                </div>
+
+
+
+
+
+            </div>
+
+            <div class="col-lg-2 col-md-2 col-md-12 text-center">
+            </div>
+        </div>
+
+</div>
+
+
+{% endblock %}

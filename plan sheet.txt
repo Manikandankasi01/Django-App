@@ -1,0 +1,22 @@
+
+First look planned to Demo [29/30/31-Jan-2018]
+
+overview content pending
+meeting updates dashboard display and design pending
+
+
+tutorial link https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Models
+
+links
+manage static files:
+https://docs.djangoproject.com/en/2.0/howto/static-files/
+
+
+docsis3.1
+fab
+fttc (curb)
+dash board [weekly, monthly]
+display each track SMEs
+DSG
+  iab
+  fab

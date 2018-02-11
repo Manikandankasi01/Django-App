@@ -1,0 +1,136 @@
+{% extends "base_1.html" %}
+
+{% load static %}
+
+{% block body %}
+
+<div class="row" style="background:inherit">
+<div class="col-lg-12">
+  <nav class="navbar navbar-default bg nav-custom" style="z-index:10">
+    <div class="container logout">
+      <ul class="nav navbar-nav navbar-left log-bg">
+        <li><a href="{% url 'ldm:ldm_home' %}" ><span class="glyphicon glyphicon-home"></span>Home</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right log-bg">
+        <li><a href="http://127.0.0.1:8000/ "><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+</div>
+<br><br><br>
+<div class="row">
+  <div class="col-md-12">
+      <div class="top-div jumbotron jumb">
+      <h2 class="head text-center">LDM Dashboard</h2>
+      <form method="get">
+        <p>
+          <span> <label>From : </label><input type="text" name="from_date" id="from_date"> </span>
+          <span> <label> To : </label> <input type="text" name="to_date" id="to_date"> </span>
+          <span>
+              <label for="track">Select Track:</label>
+                <select name="track" id="track">
+                  <option value="all" selected="selected">All</option>
+                  <option value="pdc" disabled>LDM</option>
+                </select>
+          </span>
+          <span><button type="submit" class="btn btn-default btn-primary">Submit</button></span>
+        </p>
+      </form>
+       <br>
+        </div>
+      <br><br><br><br><br><br><br><br><br>
+    <div class="container ">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="head text-center"><b>LDM report<b></h3>
+              <div class="" url-endpoint="{% url 'ldm:ldm_dashboard' %}">
+                <canvas id="ldmChart" width="80%" height="30px"></canvas>
+                <br><br>
+              </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+</div>
+<script>
+ldm_report={{ldm_report}}
+
+$( function() {
+    $( "#track" ).selectmenu();
+  } );
+$( "#to_date" ).datepicker();
+$( "#from_date" ).datepicker();
+
+
+$.ajax({
+  method: "GET",
+  success:function(reports){
+    labels=labels
+    ldm_report=ldm_report
+
+  },
+  error:function(error_data){
+    console.log(error_data)
+  }
+})
+var ldmChart = document.getElementById("ldmChart").getContext('2d');
+labels=["LDM In Queue", "LDM In Progress","LDM Completed", "LDM On hold", "LDM Rejected"]
+var ldm_Chart = new Chart(ldmChart, {
+    type: 'bar',
+    data: {
+        labels: labels,
+        datasets: [{
+            label: 'No. of SAM',
+            data: ldm_report,
+            backgroundColor: [
+                 'Orange',
+                '#FFFF00',
+                '#00CC00',
+                '#996600',
+                '#FF0000',
+                '#996600'
+            ],
+            borderColor: [
+                 'Orange',
+                '#FFFF00',
+                '#00CC00',
+                '#996600',
+                '#FF0000',
+                '#996600'
+            ],
+            borderWidth: 1
+        }]
+    },
+     options: {
+       legend:{labels: {fontColor: 'orange'}},
+      title: {
+            display: true,
+            fontColor: 'blue',
+
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true,
+                    fontColor: 'darkblue'
+
+                },
+            }],
+          xAxes: [{
+                ticks: {
+
+                    fontColor: 'darkblue'
+                },
+            }]
+        }
+
+    }
+});
+
+
+</script>
+
+
+{% endblock %}

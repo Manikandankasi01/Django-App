@@ -1,0 +1,182 @@
+{% extends "base_pdc.html" %}
+
+{% load static %}
+
+{% block body %}
+<div class="row" style="background:inherit">
+<div class="col-lg-12">
+  <nav class="navbar navbar-default bg nav-custom" style="z-index:10">
+    <div class="container logout">
+      <ul class="nav navbar-nav navbar-right log-bg">
+        <li><a href="http://127.0.0.1:8000/"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+</div>
+<br><br><br>
+<div class="row">
+  <div class="col-md-3">
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                 <li>
+                    <a href="{% url 'ldm:ldm_home' %}">
+                        <i class="glyphicon glyphicon-home"></i>  LDM Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'ldm:ldm_dashboard' %}">
+                        <i class="fa fa-fw fa-star"></i> LDM Dashboard</a>
+                </li>
+                <li>
+                    <a href="{% url 'ldm:ldm_team' %}">
+                        <i class="fa fa-fw fa-user"></i> PDC Team</a>
+                </li>
+                        <li>
+                            <a href="{% url 'ldm:ldm_workflow' %}">
+                                <i class="fa fa-fw fa-star"></i> LDM Work Flow</a>
+                        </li>
+                </li>
+                <li>
+                    <a href="#" data-toggle="collapse" data-target="#submenu-2">
+                        <i class="fa fa-fw fa-star"></i> Discustions
+                        <i class="fa fa-fw fa-angle-down pull-right"></i>
+                    </a>
+                    <ul id="submenu-2" class="collapse">
+                        <li>
+                            <a href="{% url 'ldm:ldm_meeting_update' %}">
+                                <i class="fa fa-angle-double-right"></i> LDM Meeting Update</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" data-toggle="collapse" data-target="#submenu-3">
+                        <i class="fa fa-fw fa-star"></i>LDM Automation
+                        <i class="fa fa-fw fa-angle-down pull-right"></i>
+                    </a>
+                    <ul id="submenu-3" class="collapse">
+                        <li>
+                            <a href="{% url 'automation:ldm_automation' %}">
+                                <i class="fa fa-angle-double-right"></i> Tool release Note</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'automation:ldm_automation_update' %}">
+                                <i class="fa fa-angle-double-right"></i>Tool requirment Update</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="{% url 'ldm:ldm_forum' %}">
+                        <i class="glyphicon glyphicon-book"></i> LDM Forum</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+  <div class="col-md-9">
+    <div class="container middle-content">
+          <h3 class="head text-center">LDM Work Flow</h3>
+
+        <div class="jumbotron jumb">
+            <h3 class="head">T18 Data Validation</h3>
+          <p class="paragraph">
+            Sl file in T18 package validated against 20 checks. All defects with Severity level should be collected in the feedback register.
+              It is the feedback to Telstra and will be discussed in the triage Forum.
+          </p>
+          <p class="paragraph">
+              It is the view of the business that the T18 accurately reflects what is within the SAM so the T18 is a single source of truth.
+              If we disagree with the single source of truth then this needs to be clarified with Telstra and if Telstra agrees
+              they will provide a re-submission of the T18 so that there is a new single source of truth.
+            </p>
+        </div>
+          
+        <div class="jumbotron jumb">
+            <h3 class="head">LDM Workflow Diagram</h3>
+            <img class="img-size" src="{% static "images/ldm/ldm_work_flow.jpg" %}" alt="fttc footprint">
+        <div class="jumbotron jumb">
+            <h3 class="head">Address Matching</h3>
+          <p class="paragraph">
+              Process of replacing the temporary ID in the “id” column with the correct LOC ID.
+              When adding/matching a record, the attributes need to be the same as Telstra's data in T18.
+              If LOC ID has already been provided in the T18 unless it is disregarded do not reuse it, instead make a new record.
+              We do not want duplicate LOC IDs, so it is best if you have the duplicate condition filter switched on in EXCEL
+              so you are able to immediately spot duplicate LOC IDs. Make sure the LOC ID’s matching is in the correct parcel.
+          </p>
+            <p class="paragraph">
+                Save a copy of the LOC IDs that you have replaced with the corresponding Temporary ID and prepare Loc Id-Temp Id mapping file in csv format.
+            </p>
+        </div>
+
+
+          <div class="jumbotron jumb">
+              <h3 class="head">Address Alignment & Repurposing</h3>
+            <p class="paragraph">
+              Address alignment is the process of comparing and correcting the PNI address with T18 address for valid records.
+                In cases where a location in the T18 is referring to a different location that we have in PNI/ELMS then we consider
+                this repurposing the location. In addition to this perform following operations including Obsoleting and reinstating:
+            </p>
+              <ul>
+                    <li>Bulk export the locations within the SAM</li>
+                    <li>Exclude the out of scope boundaries from Bulk export</li>
+                    <li>Compare the LOC IDs from the T18 table with the Bulk Export table and align the address</li>
+                    <li>Repurposing cases found are populate to a new file in csv format.</li>
+                    <li>What is marked as Disregard and is not already Obsolete, change it to be so</li>
+                    <li>What is marked as Active and is obsolete, reinstate this address</li>
+                    <li>Change unmarketable addresses to marketable for all Active locations</li>
+                    <li>Change non premise flag to Y for all Active locations</li>
+                    <li>Change within city limits to Y for all Active locations</li>
+                    <li>Import the changes into PNI</li>
+                    <li>Bulk export the locations within the SAM</li>
+                    <li>Count the number of Active locations. This should be the same number of active locations in the T18 table.</li>
+              </ul>
+          </div>
+          <div class="jumbotron jumb">
+          <h3 class="head">Quality Check</h3>
+            <p class="paragraph">
+              Technology Comparison: Compare the technology type of locations present in SL with PNI. PNI technology can be extracted in a file,
+                LOC ID extract report.
+            </p>
+            <p class="paragraph">
+              <b>Layer Walk:</b> As service location is a premise with an address, it should reside in a parcel.
+                Layer walk process is used to Identify if any service locations are cascaded or if placed in the middle of road by brief scanning.
+                We can move such locations to correct parcel as per the state map or google map
+            </p>
+              </div>
+
+
+          <div class="jumbotron jumb">
+              <h3 class="head">Out of scope boundaries:</h3>
+            <ul>
+                <li>ASA (Adequately Serviced Area) </li>
+                <li>MPS (Multi Premises Site) (only if in-service)</li>
+                <li>NDS (New Development Stage) (If the location associated with Existing PCD, LDM can perform LOC ID Creation and Reinstating)</li>
+                <li>ADA (Access Distribution Area) (only if in-service)</li>
+                <li>HVMDU (High value MDU)</li>
+
+            </ul>
+        </div>
+             <div class="jumbotron jumb">
+              <h3 class="head">LDM Scope for Partial Onsa:</h3>
+            <ul>
+                <li>Partial ONSA locations are which having is_partial_onsa flag as ‘Y’ in SL.</li>
+                <li>Valid locations in the Partial ONSA are with equipment associated in sl or premise_passed_Telstra flag is ‘Y’.</li>
+                <li>LOC ID creation to be performed by LMS</li>
+                <li>LDM can reinstate the locations in PNI which are valid as per sl except out of scope boundaries</li>
+
+
+            </ul>
+         </div>
+        <div class="jumbotron jumb">
+            <h3 class="head">ELMS</h3>
+            <p class="paragraph">
+              Enterprise location management system, master database of NBN. We should validate the PNI address against the ELMS data.
+                  PNI to ELMS sync happens in the overnight. If any wrong update happens in PNI, it would not flow to ELMS.
+                  It will capture as Quarantine.
+            </p>
+              </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

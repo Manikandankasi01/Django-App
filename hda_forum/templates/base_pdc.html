@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+
+  {% block title %}
+   <title>HDA Forum</title>
+  {% endblock %}
+  <link rel="shortcut icon" href="http://www.mountbarker.sa.gov.au/webdata/resources/images/NBN_Masterbrand_Australia_Descriptor_NOTAGLINE_Landscape_CMYK.jpg" />
+
+
+  {% block styles %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css" %} ">
+   <link rel="stylesheet" type="text/css" href="{% static "css/jquery-ui.min.css" %} ">
+  <link rel="stylesheet" type="text/css" href="{% static "css/jquery-ui.theme.min" %} ">
+   <link rel="stylesheet" type="text/css" href="{% static "css/jquery-ui.structure.min" %} ">
+  <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %} ">
+  <link rel="stylesheet" type="text/css" href="{% static "css/side-nav-bar.css" %} ">
+  <script src="{% static "js/jquery.min.js" %}"></script>
+  <script src="{% static "js/jquery-ui.min.js" %}"></script>
+  <script src="{% static "chartJs/Chart.min.js" %}"></script>
+  <script src="https://use.fontawesome.com/1e803d693b.js"></script>
+  {% endblock %}
+
+  {% block page %}
+
+  {% endblock page %}
+</head>
+<body class="body-pdc">
+  
+  {% block body %}
+
+  {% endblock%}
+
+  {% block js %}
+  <script src="{% static "js/jquery.min.js" %}"></script>
+  <script src="{% static "js/bootstrap.min.js" %}"></script>
+  {% endblock %}
+</body>
+</html>

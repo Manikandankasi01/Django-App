@@ -1,0 +1,390 @@
+{% extends "base.html" %} {% load static %}
+ {% block body %}
+
+<div class="row" style="background:inherit">
+    <div class="col-lg-12">
+        <nav class="navbar navbar-default bg nav-custom" style="z-index:10">
+            <div class="container logout">
+                <ul class="nav navbar-nav navbar-right log-bg">
+                    <li>
+                        <a href="http://127.0.0.1:8000/">
+                            <span class="glyphicon glyphicon-user"></span>Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="col-md-3">
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                <li>
+                    <a href="{% url 'desg_t18:hda_home' %}">
+                        <i class="glyphicon glyphicon-home"></i>  HDA Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'desg_t18:desg_dashboard' %}">
+                        <i class="fa fa-fw fa-star"></i>DESG Dashboard</a>
+                </li>
+                <li>
+                    <a href="{% url 'desg_t18:desg_team' %}">
+                        <i class="fa fa-fw fa-user"></i>DESG Team</a>
+                </li>
+                <li>
+                    <a href="#" data-toggle="collapse" data-target="#submenu-1">
+                        <i class="fa fa-fw fa-star"></i> DESG Work flow
+                        <i class="fa fa-fw fa-angle-down pull-right"></i>
+                    </a>
+                    <ul id="submenu-1" class="collapse">
+                        <li>
+                            <a href="{% url 'desg_t18:pc' %}">
+                                <i class="fa fa-angle-double-right"></i> Perform check</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'desg_t18:gml' %}">
+                                <i class="fa fa-angle-double-right"></i> GML Creation</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" data-toggle="collapse" data-target="#submenu-2">
+                        <i class="fa fa-fw fa-star"></i> Discustions
+                        <i class="fa fa-fw fa-angle-down pull-right"></i>
+                    </a>
+                    <ul id="submenu-2" class="collapse">
+                        <li>
+                            <a href="{% url 'desg_t18:triage_update' %}">
+                                <i class="fa fa-angle-double-right"></i> Triage Note</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'desg_t18:meeting_update' %}">
+                                <i class="fa fa-angle-double-right"></i>Meeting updates</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" data-toggle="collapse" data-target="#submenu-3">
+                        <i class="fa fa-fw fa-star"></i>DESG Automation
+                        <i class="fa fa-fw fa-angle-down pull-right"></i>
+                    </a>
+                    <ul id="submenu-3" class="collapse">
+                        <li>
+                            <a href="{% url 'automation:desg_automation' %}">
+                                <i class="fa fa-angle-double-right"></i> Tool release Note</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'automation:desg_automation_update' %}">
+                                <i class="fa fa-angle-double-right"></i>Tool requirment Update</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="{% url 'desg_t18:forum' %}">
+                        <i class="glyphicon glyphicon-book"></i> Forum</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="container middle-content">
+            <h3 class="head text-center">
+                <b>Design Enablement and Support Group
+                    <b>
+            </h3>
+
+            <div class="jumbotron jumb">
+                 <h2 class="head">DESG OverView:</h2>
+                <p class="paragraph">
+                    DESG Team responsible for validate and promote the design into PNI which provided by telstra, and raise the defects (if any)
+                    to telstra to correct the defects. there are three teams working parallel along with DESG. each teams
+                    has their own checks and validation. ones design validation is completed then that particular design
+                    moves to next stage GML creation process.
+                </p>
+            </div>
+
+
+            <div class="jumbotron jumb">
+                 <h2 class="head">What is T18 ?</h2>
+                <p class="paragraph">
+                    T18 means 18 mapinfo tables which contains network entities like route, duct, cables, equipments etc.. each table has seperate
+                    layers and objects which refferering to the respective geographic locations. each mapinfo table contains
+                    different file formats and each format files contains their own data.
+                </p>
+            </div>
+
+            <div class="jumbotron jumb">
+                <h2 class="head">T18 table file format</h2>
+                <p class="paragraph">
+                    The basic file components for a MapInfo Professional data set relate to the two basic environments for working in MapInfo;
+                    "Browser View" and "Mapper View".
+                </p>
+            </div>
+
+            <div class="jumbotron jumb">
+                <ol>
+                    <li class="head"> DAT</li>
+                    <p class="paragraph">The ASCII file that is the link between all other files and holds information about the type of data
+                        set file</p>
+                    <li class="head"> ID</li>
+                    <p class="paragraph">
+                        Stores information linking graphic data to the database information. This contains a 4-byte integer index into the MAP file
+                        for each feature
+                    </p>
+                    <li class="head"> MAP</li>
+                    <p class="paragraph">
+                        Stores the graphic and geographic information needed to display each vector feature on a map
+                    </p>
+                    <li class="head"> TAB</li>
+                    <p class="paragraph">
+                        The file that stores the attribute data. As an alternative to the *.DAT file, MapInfo Professional can use other data formats
+                        such as, *.TXT, *.XLS *.WK*, *.MDB (and for each Microsoft Access format the software also makes
+                        another small file). MapInfo Professional still creates a .TAB file that contains information about
+                        the data set file, and the user interacts with the TAB file only.
+                    </p>
+                    <li class="head"> IND</li>
+                    <p class="paragraph">
+                        Optional index file for tabular data. This is present if any columns are indexed
+                    </p>
+                </ol>
+            </div>
+
+
+            <div class="jumbotron jumb">
+                <h3 class="head">FSA (Fibre Serving Area)</h3>
+                <p class="paragraph">FSA is a boundary which served by Fibre to certain point to the premises or directly to premises. initially
+                    FSA boundary is defined by Area planning team based on number of service locations present in that particular
+                    geographic location. FSA will be divided into multiple SAMs.
+                </p>
+            </div>
+
+            <div class="jumbotron jumb">
+                <h3 class="head">SAM (Serving Area Module)</h3>
+                <p class="paragraph">
+                    A Service Area Module (SAM) is a geographical subset of premises typically containing between 2000 — 3000 premises. each
+                    SAM contain n number of ADAs.
+                </p>
+            </div>
+
+            <div class="jumbotron jumb">
+                <h3 class="head">ADA Access Distribution Area </h3>
+                <p class="paragraph">
+                    Access Distribution Area(ADA) is a geographical subset of premises typically containing between 200 to 1000 premises. each
+                    SAM may contain n Number of ADAs. mostly ADAs served by local distribution network like copper for FTTx
+                    and coaxial cables for HFC Areas.
+                </p>
+            </div>
+
+            <div class="jumbotron jumb">
+                <h3 class="head">MPS Multi Premise Site</h3>
+                <p class="paragraph">
+                    MPS is a type of boundary in Spatial Net defined for each MPS site that contains more than 2 units / associated addresses.
+                    An MPS code (which is an attribute of an MPS boundary) is used for naming devices and cables where network
+                    components live entirely within the MPS boundary.
+                </p>
+                <h4 class="head">Different types of MPS</h4>
+                <ol>
+                    <li>Horizontal MPS</li>
+                    <li>Low Raise MPS</li>
+                    <li>High Raise MPS</li>
+                    <li>Hybrid MPS</li>
+                </ol>
+                <h4 class="head">Horizontal MPS</h4>
+                <p class="paragraph">
+                    This category bears a close resemblance to Single Dwelling Units (SDUs). Buildings may be clustered into semi-detached or
+                    terrace arrangements. There are no internal devices used to feed the building and all cables and devices
+                    are outdoor rated. No more than two story building can be drawn using Horizontal Method.
+                </p>
+                <h4 class="head">Low Raise MPS</h4>
+                <p class="paragraph">
+                    These are multi floor, multiple premises per floor buildings. Premises are stacked on top of each other. Elements must be
+                    captured in both MPS and Outside Plant (OSP) view, in order to model this type of MPS in spatialNET.
+                    For the purpose of spatialNET activity, Low Rise focuses on the total number of premises in a building
+                    rather than the total number of premises on the site. Low Rise Buildings have 40 premises or less.
+
+                </p>
+                <h4 class="head">High Raise MPS</h4>
+                <p class="paragraph">
+                    High Rise is similar to Low Rise. High Rise Buildings have more than 40 premises.
+                </p>
+                <h4 class="head">Hybrid MPS</h4>
+                <p class="paragraph">
+                    This category refers to multiple buildings on the site, combined with space between buildings. This category requires consideration
+                    of both OSP and MPS view during the design. The following rule applies when capturing the network for
+                    a Hybrid MPS: Every element residing outside the building up to the Building Entry Point (BEP), including
+                    Premises Connection Devices (PCDs) installed on the outer wall of each unit must be captured in OSP view.
+                    Every element from the BEP to the End User Premises (EUP) inside the building is captured in MPS view.
+                </p>
+                <a href="https://www.nbnco.com.au/content/dam/nbnco/documents/new-developments-mdu-building-design-requirements.pdf" target="_blank">please refer more info about MPS</a>
+                <br><br>
+            </div>
+
+            <div class="jumbotron jumb">
+                 <h3 class="head">Fibre Network</h3>
+                <p class="paragraph">
+                    The NBN Co Fibre Network provides the physical connectivity between the FAN site and the active equipment in the street or
+                    building.
+                </p>
+                <p class="paragraph">
+                    The passive network component of a fixed network build comprises a significant part of the overall fixed network deployment.
+                    It is generally disruptive and expensive to augment or modify so it is important that the architecture,
+                    planning, design, and installation accommodates the long term needs and future growth and capacity. It
+                    is nbn’s aspiration that these facilities will be suitable not only for the nbnTM network’s initial technology
+                    choice, but for fixed access technologies developed in the future, whatever they may be.
+                </p>
+                <p class="paragraph">
+                    The NBN Co Fibre Network includes the Distribution Fibre Network (DFN), the Local Fibre Network (LFN) and Premises Fibre
+                    Networks (PFN). The DFN provides the connectivity from the Fibre Aggregation Node (FAN) to the first
+                    point where individual fibres can be accessed for a Distribution Area. The LFN provides the connectivity
+                    from this point towards the premises. The PFN provides the connectivity from the street through to the
+                    premises. There are currently two DFN architectures: Loop and Star. Star DFN deployments will be the
+                    default design used for all fixed access networks, providing a more cost effective solution. There are
+                    also two LFN architectures: LFN and Skinny LFN. The common denominator of this network is the actual
+                    physical fibre strands. nbn has selected ribbon fibre technologies due to the cost and labour savings
+                    associated with the use of this technology where high fibre numbers are required. The Skinny LFN uses
+                    lower fibre count cables with stranded fibres. All fibres are accessible individually. This provides
+                    greater flexibility in relation to the deployment of the LFN.
+                </p>
+            </div>
+
+            <div class="jumbotron jumb">
+                <h3 class="head">Fibre (Ribbon)</h3>
+                <p class="paragraph">
+                    Ribbon fibre technology significantly increases the fibre cable core counts available, and also provides significant time
+                    savings when joining fibres via fusion splicing when compared to stranded or single fibre particularly
+                    where fibre counts are greater than 144. Ribbon fibre cables are available with fibre counts ranging
+                    between 12 and 864 fibres, and these are virtually identical in size and handling characteristics to
+                    similarly constructed single fibre cables. The cables match the core counts required where all premises
+                    require a fibre as part of the access solution (12, 72, 144, 288, 432, 576, and 864) and the 12 fibre
+                    matrix suits the modularity of the Factory Installed Termination Systems (FITS). The FITS is a pre-connectorised
+                    system which pre-terminates fibres in the Local Fibre Network onto multi-fibre connectors in groups of
+                    12 and multi-ports are then connected into these as required.
+                </p>
+                <h4 class="head">Stranded Fibre</h4>
+                <p class="paragraph">
+                    The stranded fibre cable permits access to individual fibres which in turn allows for a greater degree of flexibility within
+                    the LFN. For example, a geographic area may require an allocation of x fibres for an FTTN node + x fibres
+                    for FTTB, + x fibres for Fibre on Demand. This requirement to allocate fibres initially and also provides
+                    flexibility for in-fill allocation. It allows for access to the fibre on an individual strand level to
+                    permit them to be manipulated individually as opposed to groups of 12 fibre ribbons.
+                </p>
+            </div>
+
+            <div class="jumbotron jumb">
+                <h3 class="head">Distribution Fibre Network - Star</h3>
+                <p class="paragraph">
+                    The Distribution Fibre Network (DFN) provides the underground fibre pathways between the FAN sites and the first point where
+                    individual fibres can be accessed for each Access Distribution Area. The Star DFN topology is the default
+                    for the Fixed Access build (post-Multi Technology Mix) to achieve cost efficiencies in construction.
+                    A Star DFN topology starts from a FAN site and extends outwards, with nodes connecting into it along
+                    its length. The Star architecture results in the fibre path for nodes being unprotected. The DFN is routed
+                    to pass near the likely node locations without requiring significant construction works.
+                </p>
+                <ol>
+                    <li>Distribution Sheath Segment (DSS) - Aggregation</li>
+                    <li>Distribution Sheath Segment (DSS) - Trunk</li>
+                    <li>Distribution Sheath Segment (DSS) - Branch</li>
+                    <li>Distribution Sheath Segment (DSS) - Feeder</li>
+                    <li>Hub Sheath Distribution (HSD)</li>
+                </ol>
+                <img class="img-size" src="{% static "images/dfn_star.jpg" %}" alt="dfn star footprint">
+                <h3 class="head">
+                    DFN Connectivity (star)
+                </h3>
+                <p class="paragraph">
+                    The DFN is preferably installed underground, and by exemption aerially. The DFN provides connectivity to the nodes located
+                    within the SAM modules (refer to Figure 5). Multiple cables from different DFN cables can share the same
+                    duct-line, as well as sharing duct-lines with TFN and LFN cables. Nodes are connected to the DFN cables
+                    and each node is allocated multiples of 12 fibres towards the FAN site.
+                </p>
+            </div>
+
+
+            <div class="jumbotron jumb">
+                <h3 class="head">Distribution Fibre Network - Loop</h3>
+                <p class="paragraph">
+                    The Distribution Fibre Network (DFN) provides the underground fibre pathways between the FAN sites and the first point where
+                    individual fibres can be accessed for an Access Distribution Area. The DFN has previously been installed
+                    primarily for the support of GPON in a loop topology, starting from a FAN site and finishing at the same
+                    site, with FDHs connecting into it along its length. In this configuration, the DFN cables are typically
+                    higher fibre counts, with fibre core counts needed between 288 to 864 fibres. The DFN is also notionally
+                    allocated an A and B direction to assist in the identification of upstream connections at the FDH, where
+                    the A indicates a clockwise direction and B an anticlockwise direction. The FDHs are street side externally
+                    rated cabinets which are used to house the GPON splitters used to facilitate connectivity between the
+                    DFN and the Local Fibre Network (LFN). The FDH also provides the ability to provide direct connectivity
+                    between the DFN and LFN. The DFN was also required to provide diverse pathways for point to point services
+                    from FDHs where required. The DFN fibre links cable into the FDH is provided by a single cable and has
+                    both A and B directions within the same cable sheath.
+                </p>
+                <img class="img-size" src="{% static "images/dfn_loop.jpg " %}" alt="dfn star footprint">
+                <h4 class="head">DFN Connectivity (loop)</h4>
+                <p class="paragraph">
+                    The DFN is preferably installed underground, and by exemption aerially, and in the past was designed in a ring topology starting
+                    and finishing at the same FAN site. This effectively divided the DFN cable ring into an ‘A’ and a ‘B’
+                    side. The DFN provides connectivity to the Fibre Distribution Hubs (FDH) located within the FSAM modules
+                    and provides two diverse fibre pathways back into the FAN site for each FDH (refer to Figure 6). Any
+                    individual DFN ring cable will be separated from any other portion of the same ring by the most practically
+                    achievable distance. Multiple cables from different DFN ring cables can share the same duct-line, as
+                    well as sharing duct-lines with TFN and LFN cables. Fibre Distribution Hubs are connected to the DFN
+                    ring cables and each FDH is allocated fibres in both A and B directions towards the FAN site. This ring
+                    allocation provides a diverse pathway for end-user connectivity and allows for temporary service restoration
+                    when required. In the event of a serious service impacting event (e.g. cable cut, etc.) the services
+                    that are connected to the affected side can be manually re-patched at the FDH site and FAN site to the
+                    diverse pathway. Therefore the DFN network must be capable of servicing these connections in both directions
+                    of the DFN within the optical constraints. Whilst the DFN provides diversity from each FDH this diversity
+                    is not transferred into the LFN (the LFN is a star topology) and therefore the DFN should also be designed
+                    to align with potential users of point to point services (e.g. banks, schools, universities, business
+                    parks) to allow the LFN to provide the diverse links.
+                </p>
+            </div>
+
+            <div class="jumbotron jumb">
+                <h3 class="head">Fibre Distribution Hub</h3>
+                <p class="paragraph">
+                    The Fibre Distribution Hub (FDH) is an aggregation and connection point between the Distribution Fibre Network (DFN) and
+                    the Local Fibre Network (LFN). The FDH is available in 432, 576, and 864 LFN variants, however 576 has
+                    been the preferred choice. The FDH is an environmentally secure passive device installed on street frontages
+                    and serves as a centralised splitter location. The splitter modules housed within the FDH provide a one-to-many
+                    relationship between the in-coming DFN fibres and the out-going LFN fibres. In keeping with the requirements
+                    of the GPON equipment, the splitters used are a 1:32 passive split. The standard and most common connectivity
+                    type is a PON connection between an end-user and the output leg of a splitter module. The splitter module
+                    is in a 1:32 planar configuration and these modules are pre-terminated with 1 x DFN SC/APC fibre lead
+                    and 32 x LFN SC/APC fibre leads and these connect into the network via the patch panel array within the
+                    FDH.
+                </p>
+            </div>
+
+            <div class="jumbotron jumb">
+                <h3 class="head">Local Fibre Network</h3>
+                <p class="paragraph">
+                    The Local Fibre Network (LFN) is installed from the FDH to the end-user premises in a star topology with no inherent capacity
+                    for diversity. Diversity is achieved by extending the LFN from any other FDH, dependant on the status
+                    of the other FDH’s location in separate geographic pathways.
+                </p>
+                <p class="paragraph">
+                    LFN cables are typically smaller fibre count cables, ranging between 72 and 288 fibre counts, and are installed in the aerial
+                    corridor and underground pathways typically alongside property boundary street frontages. The LFN cables
+                    are presented at the FDH on a connector array to facilitate connection to the upstream DFN either via
+                    a PON splitter or direct connection. For an underground deployment, the individual LFN cables are extended
+                    from the FDH into the Local Fibre Network to multiple centralised splice closures or Access Joints (AJL)
+                    where the cables are joined into smaller fibre count “tether” cables via splicing. The tether cable is
+                    factory terminated on one end only with an environmentally hardened multi-fibre connector and is installed
+                    between the AJL and local fibre pits where they provide a connection point for the factory terminated
+                    Multi-Ports (MPT). Service fibre drops to End User premises are connected into the MPTs as required.
+                    For aerial deployment, the LFN is a factory installed termination system (FITS) that utilises factory
+                    installed splice closures, referred to as overmoulds, to present the multi-fibre connector at each required
+                    location. The MPTs are then connected in a similar manner as the underground method.
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            $("#tabs").tabs();
+        });
+    </script> {% endblock %}

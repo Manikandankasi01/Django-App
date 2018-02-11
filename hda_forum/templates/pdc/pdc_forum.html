@@ -1,0 +1,138 @@
+{% extends "base_pdc.html" %}
+
+{% load crispy_forms_tags %}
+{% load static %}
+{% block page %}
+    {{ forum_form.media }}
+{% endblock page %}
+{% block body %}
+
+  <div class="row" style="background:inherit">
+<div class="col-lg-12">
+  <nav class="navbar navbar-default bg nav-custom" style="z-index:10">
+    <div class="container logout">
+      <ul class="nav navbar-nav navbar-right log-bg">
+        <li><a href="http://127.0.0.1:8000/"><span class="glyphicon glyphicon-user"></span>Logout</a></li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+                <div class="input-group">
+                    <input class=" form-control" type="text" name="forum-search" placeholder="Search here">
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-default">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </form>
+    </div>
+  </nav>
+</div>
+</div>
+<br><br><br>
+<div class="row">
+  <div class="col-md-2">
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav side-nav">
+          <li>
+                    <a href="{% url 'pdc:pdc_home' %}">
+                        <i class="glyphicon glyphicon-home"></i>  PDC Home</a>
+                </li>
+                <li>
+                    <a href="{% url 'pdc:pdc_dashboard' %}">
+                        <i class="fa fa-fw fa-star"></i> PDC Dashboard</a>
+                </li>
+                <li>
+                    <a href="{% url 'pdc:pdc_team' %}">
+                        <i class="fa fa-fw fa-user"></i> PDC Team</a>
+                </li>
+                        <li>
+                            <a href="{% url 'pdc:pdc_workflow' %}">
+                                <i class="fa fa-fw fa-star"></i> PDC Work Flow</a>
+                        </li>
+                </li>
+                <li>
+                    <a href="#" data-toggle="collapse" data-target="#submenu-2">
+                        <i class="fa fa-fw fa-star"></i> Discustions
+                        <i class="fa fa-fw fa-angle-down pull-right"></i>
+                    </a>
+                    <ul id="submenu-2" class="collapse">
+                        <li>
+                            <a href="{% url 'pdc:pdc_meeting_update' %}">
+                                <i class="fa fa-angle-double-right"></i> PDC Meeting Update</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" data-toggle="collapse" data-target="#submenu-3">
+                        <i class="fa fa-fw fa-star"></i>PDC Automation
+                        <i class="fa fa-fw fa-angle-down pull-right"></i>
+                    </a>
+                    <ul id="submenu-3" class="collapse">
+                        <li>
+                            <a href="{% url 'automation:pdc_automation' %}">
+                                <i class="fa fa-angle-double-right"></i> Tool release Note</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'automation:pdc_automation_update' %}">
+                                <i class="fa fa-angle-double-right"></i>Tool requirment Update</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="{% url 'pdc:pdc_forum' %}">
+                        <i class="glyphicon glyphicon-book"></i> PDC Forum</a>
+                </li>
+        </ul>
+        </div>
+  </div>
+  <div class="col-md-10" >
+    <div class="container">
+        <h3 class="head text-center">PDC Knowledge Sharing Platform</h3>
+      {% for post in posted_data %}
+        <div class="jumbotron jumb">
+        <h3 class="head meeting-content">Track : {{ post.track }} <small>{{ post.updated_date|timesince }}</small></h3>
+        <p class="head meeting-content">{{ post.question }}</p>
+        <p class="meeting-p">{{ post.answer|linebreaks }}</p>
+        <p class="meeting-u">Updated by {{ post.updated_by }} on {{ post.updated_date }}</p>
+        <br>
+        <a class="btn btn-primary" href="{% url 'pdc:edit_forum_content' id=post.id %}">Edit</a>
+        <a class="btn btn-primary" href="{% url 'pdc:delete_forum_content' id=post.id %}">Delete</a>
+      </div>
+      {% endfor %}
+      <br><br>
+      <!-- pagination goes here  -->
+        <br><br>
+        <div class="pagination">
+          <span class="step-links">
+              {% if posted_data.has_previous %}
+                  <a href="?page=1">&laquo; first</a>
+                  <a href="?page={{ posted_data.previous_page_number }}">previous</a>
+              {% endif %}
+          <span class="current">
+            Page {{ posted_data.number }} of {{ posted_data.paginator.num_pages }}.
+         </span>
+            {% if posted_data.has_next %}
+              <a href="?page={{ posted_data.next_page_number }}">next</a>
+              <a href="?page={{ posted_data.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+         </span>
+       </div>
+
+      <div class="jumbotron jumb">
+      <form method="post">
+      {% csrf_token %}
+      {{forum_form|crispy}}
+
+      <input class="btn btn-default btn-primary" type="submit" name="Submit">
+      </form>
+      </div>
+
+
+
+  </div>
+  </div>
+</div>
+
+{% endblock %}

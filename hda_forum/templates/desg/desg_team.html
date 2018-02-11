@@ -1,0 +1,420 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <title>Desg-Team</title>
+      <link rel="shortcut icon" href="https://media.apnarm.net.au/media/images/2017/08/22/b88933383z1_20170822072525_000g1joji542-0-p0hoycagpdsrzdvhso2_fct1239x920x2x4_ct620x465.jpg" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.css" %} ">
+   <link rel="stylesheet" type="text/css" href="{% static "css/jquery-ui.min.css" %} ">
+  <link rel="stylesheet" type="text/css" href="{% static "css/jquery-ui.theme.min" %} ">
+   <link rel="stylesheet" type="text/css" href="{% static "css/jquery-ui.structure.min" %} ">
+  <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %} ">
+  <link rel="stylesheet" type="text/css" href="{% static "css/side-nav-bar.css" %} ">
+  <script src="{% static "js/jquery.min.js" %}"></script>
+  <script src="{% static "js/jquery-ui.min.js" %}"></script>
+  <script src="{% static "chartJs/Chart.min.js" %}"></script>
+  <script src="{% static "js/bootstrap.min.js" %}"></script>
+
+    <script>
+        $(function () {
+            $("#tabs").tabs();
+        });
+    </script>
+    <style>
+        li {
+            vertical-align: middle;
+        }
+
+        .table-users tbody tr:hover {
+            cursor: pointer;
+            background-color: #eee;
+        }
+
+        .nav-user-photo {
+            vertical-align: middle;
+        }
+
+        .user_panel {
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<div class="row" style="background:inherit">
+    <div class="col-lg-12">
+        <nav class="navbar navbar-default bg nav-custom" style="z-index:10">
+            <div class="container logout">
+                <ul class="nav navbar-nav navbar-right log-bg">
+                    <li>
+                        <a href="http://127.0.0.1:8000/">
+                            <span class="glyphicon glyphicon-user"></span>Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="col-md-3">
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav side-nav">
+          <li>
+              <a href="{% url 'desg_t18:desg_home' %}"><i class="glyphicon glyphicon-home"></i>  DESG Home</a>
+          </li>
+          <li>
+                    <a href="{% url 'desg_t18:desg_team' %}">
+                        <i class="fa fa-fw fa-user"></i>DESG Team</a>
+                </li>
+          <li>
+            <a href="#" data-toggle="collapse" data-target="#submenu-1"><i class="fa fa-fw fa-star"></i> DESG Work flow<i class="fa fa-fw fa-angle-down pull-right"></i></a>
+              <ul id="submenu-1" class="collapse">
+                  <li><a href="{% url 'desg_t18:pc' %}"><i class="fa fa-angle-double-right"></i> Perform check</a></li>
+                  <li><a href="{% url 'desg_t18:gml' %}"><i class="fa fa-angle-double-right"></i> GML Creation</a></li>
+              </ul>
+          </li>
+          <li>
+            <a href="#" data-toggle="collapse" data-target="#submenu-2"><i class="fa fa-fw fa-star"></i>  Discustions <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+            <ul id="submenu-2" class="collapse">
+              <li><a href="{% url 'desg_t18:triage_update' %}"><i class="fa fa-angle-double-right"></i> Triage Note</a></li>
+              <li><a href="{% url 'desg_t18:meeting_update' %}"><i class="fa fa-angle-double-right"></i>Meeting updates</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#" data-toggle="collapse" data-target="#submenu-3"><i class="fa fa-fw fa-star"></i>DESG Automation <i class="fa fa-fw fa-angle-down pull-right"></i></a>
+            <ul id="submenu-3" class="collapse">
+              <li><a href="{% url 'automation:desg_automation' %}"><i class="fa fa-angle-double-right"></i> Tool release Note</a></li>
+              <li><a href="{% url 'automation:desg_automation_update' %}"><i class="fa fa-angle-double-right"></i>Tool requirment Update</a></li>
+            </ul>
+          </li>
+              <li>
+                  <a href="{% url 'desg_t18:desg_dashboard' %}"><i class="fa fa-fw fa-star"></i>DESG Dashboard</a>
+              </li>
+              <li>
+                  <a href="{% url 'desg_t18:forum' %}"><i class="glyphicon glyphicon-book"></i>  Forum</a>
+              </li>
+
+        </ul>
+        </div>
+  </div>
+
+<div class="col-md-9">
+        <div class="container middle-content">
+
+
+    <div id="tabs">
+        <ul>
+            <li>
+                <a href="#desg-manager">Managers & Lead</a>
+            </li>
+            <li>
+                <a href="#desg-sme">SMEs</a>
+            </li>
+            <li>
+                <a href="#desg-team">Team</a>
+            </li>
+        </ul>
+        <div id="desg-manager">
+            <div class="row">
+                <div class="panel panel-default user_panel">
+                    <div class="panel-body">
+                        <div class="table-container">
+                            <table class="table-users table" border="0">
+                                <tbody>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Hari
+                                        </td>
+                                        <td>
+                                            Group Project Manager
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Bijesh
+                                        </td>
+                                        <td>
+                                            Senior Project Manager
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Salil Salahuddin
+                                        </td>
+                                        <td>
+                                            Senior Project Manager [Onshore]
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Venkatesh Hariharasubramonian
+                                        </td>
+                                        <td>
+                                            Project Manager
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Rupesh Muraleedharan
+                                        </td>
+                                        <td>
+                                            Project Manager [Onshore]
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Arun Krishna
+                                        </td>
+                                        <td>
+                                            FTTx/HFC Technical specialist [Onshore]
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Sridhar Ambekar 
+                                        </td>
+                                        <td>
+                                            FTTx Technical specialist [Onshore]
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Nisha Ramachandran
+                                        </td>
+                                        <td>
+                                            Lead
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Alan Babu
+                                        </td>
+                                        <td>
+                                            Lead
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="desg-sme">
+            <div class="row">
+                <div class="panel panel-default user_panel">
+                    <div class="panel-body">
+                        <div class="table-container">
+                            <table class="table-users table" border="0">
+                                <tbody>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Sangeetha Krishnan
+                                        </td>
+                                        <td>
+                                            Senior System Engineer
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Aravind Suresh
+                                        </td>
+                                        <td>
+                                            Senior System Engineer
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Anusa Moottoolikandy
+                                        </td>
+                                        <td>
+                                            Senior System Engineer
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Deepa M
+                                        </td>
+                                        <td>
+                                            Senior System Engineer
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Rikku Kurian
+                                        </td>
+                                        <td>
+                                            Senior System Engineer
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div id="desg-team">
+            <div class="row">
+                <div class="panel panel-default user_panel">
+                    <div class="panel-body">
+                        <div class="table-container">
+                            <table class="table-users table" border="0">
+                                <tbody>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Rijo Sunny
+                                        </td>
+                                        <td>
+                                            Technology Analyst
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Mohith Prakash
+                                        </td>
+                                        <td>
+                                            Senior System Engineer
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Shreemahalakshmi Sivaprakasam
+                                        </td>
+                                        <td>
+                                            Senior System Engineer
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Krishnan Potty
+                                        </td>
+                                        <td>
+                                            Senior System Engineer
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Manikandan Kasi
+                                        </td>
+                                        <td>
+                                            Senior System Engineer
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Gaurav Popli
+                                        </td>
+                                        <td>
+                                            System Engineer
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            SWATHY MOHAN
+                                        </td>
+                                        <td>
+                                            System Engineer
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="10" align="center">
+                                            <i class="fa fa-2x fa-user fw"></i>
+                                        </td>
+                                        <td>
+                                            Maria Joy
+                                        </td>
+                                        <td>
+                                            System Engineer
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ </div>
+    </div>
+</body>
+
+</html>
